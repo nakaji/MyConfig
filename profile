@@ -62,7 +62,8 @@ if [ ! -d "$HOME" ]; then
 fi
 
 # normalize HOME to unix path
-HOME="$(cd "$HOME" ; pwd)"
+#HOME="$(cd "$HOME" ; pwd)"
+HOME="$(cd "/d/Users/$USERNAME" ; pwd)"
 
 export PATH="$HOME/bin:$PATH"
 
@@ -180,3 +181,8 @@ elif [ -e ~/.bash_profile ]; then
 elif [ -e /etc/bash_profile ]; then
     . /etc/bash_profile
 fi
+
+###########################
+export GIT_PAGER="nkf -s | LESSCHARSET=utf-8 less"
+export GIT_EDITOR="'D:\Apps\Editor\vim\gVim.exe' -c 'set fenc=utf-8'"
+
