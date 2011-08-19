@@ -186,3 +186,6 @@ fi
 export GIT_PAGER="nkf -s | LESSCHARSET=utf-8 less"
 export GIT_EDITOR="'D:\Apps\Editor\vim\gVim.exe' -c 'set fenc=utf-8'"
 
+##プロキシ経由の場合
+#export http_proxy=http://proxy.example.com:8080/
+#export https_proxy=https://proxy.example.com:8080/
