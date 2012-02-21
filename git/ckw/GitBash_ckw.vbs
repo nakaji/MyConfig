@@ -3,6 +3,7 @@ Set shell = CreateObject("WScript.Shell")
 
 Const TemporaryFolder = 2
 linkfile = fso.BuildPath(fso.GetSpecialFolder(TemporaryFolder), "Git Bash.lnk")
+gitdir = fso.GetParentFolderName(WScript.ScriptFullName)
 
 ' Dynamically create a shortcut with the current directory as the working directory.
 Set link = shell.CreateShortcut(linkfile)
