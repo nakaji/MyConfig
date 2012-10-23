@@ -30,15 +30,6 @@ case "$PATH" in
 	;;
 esac
 
-# check msys-1.0.dll
-if test -f /etc/msys-1.0.dll.md5
-then
-	# if check succeeds, let's avoid checking again
-	md5sum --status --check /etc/msys-1.0.dll.md5 &&
-	rm -f /etc/msys-1.0.dll.md5 ||
-	printf "\n\033[31mERROR: Your msys-1.0.dll is out-of-date!\033[m\n\n"
-fi
-
 if [ -z "$USERNAME" ]; then
   LOGNAME="`id -un`"
 else
@@ -62,8 +53,7 @@ if [ ! -d "$HOME" ]; then
 fi
 
 # normalize HOME to unix path
-#HOME="$(cd "$HOME" ; pwd)"
-HOME="$(cd "/d/Users/$USERNAME" ; pwd)"
+HOME="$(cd "$HOME" ; pwd)"
 
 export PATH="$HOME/bin:$PATH"
 
@@ -162,6 +152,7 @@ esac
 
 
 . /etc/git-completion.bash
+[ -r /etc/git-prompt.sh ] && . /etc/git-prompt.sh
 if test -z "$WINELOADERNOEXEC"
 then
 	PS1='\[\033]0;$MSYSTEM:\w\007
@@ -188,10 +179,3 @@ elif [ -e ~/.bash_profile ]; then
 elif [ -e /etc/bash_profile ]; then
     . /etc/bash_profile
 fi
-
-###########################
-export GIT_EDITOR="'D:\Apps\Editor\vim\gVim.exe' -c 'set fenc=utf-8'"
-
-##プロキシ経由の場合
-#export http_proxy=http://proxy.example.com:8080/
-#export https_proxy=https://proxy.example.com:8080/
